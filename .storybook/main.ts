@@ -10,6 +10,11 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  async viteFinal(config) {
+    // Allow Storybook to be deployed under a sub-path (e.g. GitHub Pages)
+    config.base = process.env.STORYBOOK_BASE_HREF ?? '/'
+    return config
+  },
 }
 
 export default config
